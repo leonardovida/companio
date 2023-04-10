@@ -15,7 +15,7 @@ alembic upgrade head
 """
 import uuid
 
-from sqlalchemy import String
+from sqlalchemy import String, Boolean
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -42,10 +42,20 @@ class List(Base):
     id: Mapped[str] = mapped_column(
         UUID(as_uuid=False), primary_key=True, default=lambda _: str(uuid.uuid4())
     )
-    city: Mapped[str] = mapped_column(String(100), nullable=False)
-    list: Mapped[str] = mapped_column(String(4000), nullable=False)
+    city: Mapped[str] = mapped_column(String(100), nullable=True)
+    list: Mapped[str] = mapped_column(String(4000), nullable=True)
     email: Mapped[str] = mapped_column(
         String(254), nullable=True, unique=False, index=True
     )
     phone: Mapped[str] = mapped_column(String(100), nullable=True)
-    service: Mapped[str] = mapped_column(String(100), nullable=False)
+    service: Mapped[str] = mapped_column(String(100), nullable=True)
+
+
+class Note(Base):
+    __tablename__ = "note_model"
+    
+    id: Mapped[str] = mapped_column(
+        UUID(as_uuid=False), primary_key=True, default=lambda _: str(uuid.uuid4())
+    )
+    text: Mapped[str] = mapped_column(String(10000), nullable=True)
+    completed: Mapped[bool] = mapped_column(Boolean, nullable=True, default=False)
