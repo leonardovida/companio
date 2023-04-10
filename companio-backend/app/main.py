@@ -1,64 +1,33 @@
-import os
-import databases
-import sqlalchemy
-from typing import List
 from fastapi import FastAPI
-from pydantic import BaseModel
-from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-from .routers import users
+from fastapi.middleware.trustedhost import TrustedHostMiddleware
+
+
+from app.api.api import api_router
+from app.core import config
+#from .routers import users
 from .database import database, notes
 
 
-class NoteIn(BaseModel):
-    text: str
-    completed: bool
+app = FastAPI(
+    title=config.settings.PROJECT_NAME,
+    version=config.settings.VERSION,
+    description=config.settings.DESCRIPTION,
+    openapi_url="/openapi.json",
+    docs_url="/",
+)
 
+app.include_router(api_router)
+#app.include_router(users.router)
 
-class Note(BaseModel):
-    id: int
-    text: str
-    completed: bool
-
-
-app = FastAPI()
-
-app.include_router(users.router)
-
-origins = [
-    "http://localhost",
-    "http://localhost:8080",
-    "http://localhost:3000"
-]
-
+# Sets all CORS enabled origins
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[str(origin) for origin in config.settings.BACKEND_CORS_ORIGINS],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-
-@app.on_event("startup")
-async def startup():
-    await database.connect()
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
-
-
-@app.get("/notes/", response_model=List[Note])
-async def read_notes():
-    query = notes.select()
-    return await database.fetch_all(query)
-
-
-@app.post("/notes/", response_model=Note)
-async def create_note(note: NoteIn):
-    print(note)
-    query = notes.insert().values(text=note.text, completed=note.completed)
-    last_record_id = await database.execute(query)
-    return {**note.dict(), "id": last_record_id}
+# Guards against HTTP Host Header attacks
+app.add_middleware(TrustedHostMiddleware, allowed_hosts=config.settings.ALLOWED_HOSTS)

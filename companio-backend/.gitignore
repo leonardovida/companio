@@ -1,3 +1,8 @@
+# postgresql
+data
+default_database_data
+test_database_data
+
 __pycache__
 venv
 .env
