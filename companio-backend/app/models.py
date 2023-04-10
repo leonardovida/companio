@@ -15,7 +15,7 @@ alembic upgrade head
 """
 import uuid
 
-from sqlalchemy import String, Boolean
+from sqlalchemy import Boolean, String
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
@@ -38,7 +38,7 @@ class User(Base):
 
 class List(Base):
     __tablename__ = "list_model"
-    
+
     id: Mapped[str] = mapped_column(
         UUID(as_uuid=False), primary_key=True, default=lambda _: str(uuid.uuid4())
     )
@@ -53,7 +53,7 @@ class List(Base):
 
 class Note(Base):
     __tablename__ = "note_model"
-    
+
     id: Mapped[str] = mapped_column(
         UUID(as_uuid=False), primary_key=True, default=lambda _: str(uuid.uuid4())
     )

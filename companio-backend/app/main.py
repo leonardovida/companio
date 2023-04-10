@@ -2,11 +2,10 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 
-
 from app.api.api import api_router
 from app.core import config
-#from .routers import users
-from .database import database, notes
+
+# from .routers import users
 
 
 app = FastAPI(
@@ -18,7 +17,7 @@ app = FastAPI(
 )
 
 app.include_router(api_router)
-#app.include_router(users.router)
+# app.include_router(users.router)
 
 # Sets all CORS enabled origins
 app.add_middleware(

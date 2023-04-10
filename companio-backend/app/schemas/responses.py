@@ -21,6 +21,7 @@ class UserResponse(BaseResponse):
     id: str
     email: EmailStr
 
+
 class ListReponse(BaseResponse):
     id: str
     city: str
@@ -28,7 +29,8 @@ class ListReponse(BaseResponse):
     email: str
     phone: str
     service: str
-    
+
+
 class Note(BaseModel):
     id: int
     text: str

@@ -19,7 +19,7 @@ async def register_new_list(
     result = await session.execute(select(List).where(List.email == new_user.email))
     if result.scalars().first() is not None:
         print("Email already registered.")
-        #raise HTTPException(status_code=400, detail="Email already registered.")
+        # raise HTTPException(status_code=400, detail="Email already registered.")
     _list = List(
         email=new_user.email,
         city=new_user.city,

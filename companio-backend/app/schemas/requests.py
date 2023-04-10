@@ -17,7 +17,7 @@ class UserUpdatePasswordRequest(BaseRequest):
 class UserCreateRequest(BaseRequest):
     email: EmailStr
     password: str
-    
+
 
 class ListCreateRequest(BaseRequest):
     email: EmailStr
@@ -25,6 +25,7 @@ class ListCreateRequest(BaseRequest):
     list: str
     phone: str
     service: str
+
 
 class NoteIn(BaseModel):
     text: str

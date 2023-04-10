@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core import config, security
 from app.core.session import async_session
-from app.models import User, List
+from app.models import User
 
 reusable_oauth2 = OAuth2PasswordBearer(tokenUrl="auth/access-token")
 
@@ -52,4 +52,3 @@ async def get_current_user(
     if not user:
         raise HTTPException(status_code=404, detail="User not found.")
     return user
-
