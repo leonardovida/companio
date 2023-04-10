@@ -44,9 +44,6 @@ class List(Base):
     )
     city: Mapped[str] = mapped_column(String(100), nullable=True)
     list: Mapped[str] = mapped_column(String(4000), nullable=True)
-    email: Mapped[str] = mapped_column(
-        String(254), nullable=True, unique=False, index=True
-    )
     phone: Mapped[str] = mapped_column(String(100), nullable=True)
     service: Mapped[str] = mapped_column(String(100), nullable=True)
 
