@@ -5,9 +5,6 @@ from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from app.api.api import api_router
 from app.core import config
 
-# from .routers import users
-
-
 app = FastAPI(
     title=config.settings.PROJECT_NAME,
     version=config.settings.VERSION,
@@ -17,7 +14,6 @@ app = FastAPI(
 )
 
 app.include_router(api_router)
-# app.include_router(users.router)
 
 # Sets all CORS enabled origins
 app.add_middleware(
