@@ -1,4 +1,4 @@
-# nfp-backend
+# companio-backend
 
 Setup:
 

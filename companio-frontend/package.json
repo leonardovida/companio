@@ -1,5 +1,5 @@
 {
-  "name": "nfp-frontend",
+  "name": "companio-frontend",
   "private": true,
   "scripts": {
     "dev": "next dev",

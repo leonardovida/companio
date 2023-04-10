@@ -1,4 +1,4 @@
-# NFP Boilerplate
+# companio Boilerplate
 
 * Next.js
 * FastAPI
@@ -20,7 +20,7 @@ Copy `.env.example` to `.env`.
 
 The `.env` should look like this:
 
-    DATABASE_URL=postgresql://nfp_boilerplate_user:password@db/nfp_boilerplate_dev
+    DATABASE_URL=postgresql://companio_boilerplate_user:password@db/companio_boilerplate_dev
 
 Run docker compose.
 
@@ -32,7 +32,7 @@ List running containers.
 
 Open terminal into backend container.
 
-    $ docker exec -it nfp-boilerplate-backend-1 bash
+    $ docker exec -it companio-boilerplate-backend-1 bash
 
 Run migrations in backend container.
 
@@ -40,11 +40,11 @@ Run migrations in backend container.
 
 Open terminal into postgres container.
 
-    $ docker exec -it nfp-boilerplate-db-1 bash
+    $ docker exec -it companio-boilerplate-db-1 bash
 
 Open psql in postgres container.
 
-    $ psql -U nfp_boilerplate_user nfp_boilerplate_dev
+    $ psql -U companio_boilerplate_user companio_boilerplate_dev
 
 ## Backend Without Docker
 
@@ -52,7 +52,7 @@ Copy `.env.example` to `.env`.
 
 Change the host in `.env` to `localhost`.
 
-    DATABASE_URL=postgresql://nfp_boilerplate_user:password@localhost/nfp_boilerplate_dev
+    DATABASE_URL=postgresql://companio_boilerplate_user:password@localhost/companio_boilerplate_dev
 
 Set up virtualenv.
 
@@ -62,8 +62,8 @@ Set up virtualenv.
 
 Setup database.
 
-    $ createdb nfp_boilerplate_dev
-    $ createuser nfp_boilerplate_user -P
+    $ createdb companio_boilerplate_dev
+    $ createuser companio_boilerplate_user -P
 
 Run migrations
 
@@ -87,7 +87,7 @@ Run tests with stdout.
 
 Copy `vars.example.sh` to `vars.sh`.
 
-Copy your server's pem file to the `nfp-devops` directory.
+Copy your server's pem file to the `companio-devops` directory.
 
 Replace the placeholder variables with real variables.
 
