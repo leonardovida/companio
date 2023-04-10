@@ -16,6 +16,19 @@ config = context.config
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
+def load_env_file():
+    environment = os.getenv("ENVIRONMENT", "local")  # Default to "local" if ENVIRONMENT variable is not set
+
+    if environment == "local":
+        dotenv_path = ".env.local"
+    elif environment == "production":
+        dotenv_path = ".env.production"
+    else:
+        raise ValueError(f"Invalid environment '{environment}', must be 'local' or 'production'")
+
+    load_dotenv(dotenv_path)
+
 config.set_main_option('sqlalchemy.url', os.getenv('DATABASE_URL'))
 
 
