@@ -32,3 +32,4 @@ CMD bash init.sh && \
 # Print "ready" when the container is ready
 RUN echo "ready"
 EXPOSE 8000
+EXPOSE 80
