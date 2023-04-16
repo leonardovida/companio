@@ -2,12 +2,11 @@
 data
 default_database_data
 test_database_data
-
 __pycache__
 venv
 .env
-
 .env.*
+.vscode
 
 # Created by https://www.toptal.com/developers/gitignore/api/python,nextjs,react,database
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,nextjs,react,database
