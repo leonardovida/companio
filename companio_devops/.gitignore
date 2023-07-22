@@ -1,0 +1,5 @@
+.env.companio-frontend
+.env.companio-backend
+default.conf
+*.pem
+vars.sh
