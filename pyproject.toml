@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "companio-frontend-mvp"
+version = "0.1.0"
+description = ""
+authors = ["Leonardo Vida <lleonardovida@gmail.com>"]
+readme = "README.md"
+packages = [{include = "companio_frontend_mvp"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+streamlit = "^1.25.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
